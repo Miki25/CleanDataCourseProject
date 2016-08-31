@@ -1,0 +1,30 @@
+---
+title: "README.md"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## README for Getting and Cleaning Data course project
+
+This is the README for my Getting and Cleaning Data Course Project. 
+The raw data is the UCI HAR Dataset, avaible online here: 
+  https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+  Analysis was done by running the script named data_analysis.R
+The dataset contains a training and a test set. Three files were used from each set (the files from the test set had test in their name instead of train):  
+      
+      X_train.txt: contains the data recorded from the smartphone sensors
+      
+      Y_train.txt: contains the activity labels
+      
+      Subject_train.txt: contains the ID of the subjects (One ID for each observation in the dataset)
+
+The data in the three files were merged into a single data frame consisting of 563 variables per observation (Subject, activity ID and the smartphone data). The same step was repeated for the test set. After this the test and training sets were merged to create a data frame containing the whole dataset.
+
+The file features.txt contains the names of the variable columns in the X_test and X_train datasets. I renamed the names of the columns in the dataframe using the variable names in this file.
+
+I created a new data frame containing only the means and standard deviation variables found in the dataset. Then I changed the numeric activity IDs (1-6) to descriptive IDs (ie walking, laying, sitting etc.) in this data frame.
+
+Using this data, I calculated the means of all variables grouped by activity and subject. The tidy dataset was then exported to a file called Tidy_UCI_HAR_data.txt

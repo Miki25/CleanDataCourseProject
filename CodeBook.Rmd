@@ -1,0 +1,59 @@
+---
+title: "CodeBook.md"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Codebook for Getting and Cleaning Data course project
+
+This is the codebook for my Getting and Cleaning Data Course Project. 
+The raw data is the UCI HAR Dataset, avaible online here: 
+  https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
+##Data analysis:
+
+Data analysis was done using the script data_analysis.R . In summary, the data from the smartphone sensors was combined with the corresponding subject and activity IDs into a single data frame containing both the test and the training set. The column names were relabelled with descriptive names. Activity IDs (numeric) were changed into descriptive IDs (ie walking, standing, sitting etc.). Means and standard deviations of the different measurements were extracted from this data frame, all other values were omitted. Finally, a data set was created with the averages of all variables grouped by subject ID AND Activity ID.
+
+##Data aquisition
+
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+
+##Variable descriptions:
+
+Subject ID: Numeric valuable in a range of 1-30.  
+Activity ID: String valuable, can be one of the following:   
+  Walking,  Walking upstairs,   Walking downstairs,   Sitting,   Standing,   Lying  
+tBodyAcc-mean()-XYZ: Mean of total body acceleration signals in the X,Y or Z axis (3 variables)  
+tGravityAcc-mean()-XYZ: Mean of gravity acceleration signals in the X,Y or Z axis (3 variables)  
+tBodyAccJerk-mean()-XYZ: Mean of body acceleration Jerk signals (linear acceleration derived in time) in the X,Y or Z axis (3 variables)  
+tBodyGyro-mean()-XYZ: Mean of Gyroscope signals in the X,Y or Z axis (3 variables)  
+tBodyGyroJerk-mean()-XYZ: Mean of Gyroscope Jerk signals (angular velocity derived in time) in the X,Y or Z axis (3 variables)  
+tBodyAccMag-mean(): Mean of the magnitude of the BodyAcc signal (calculated using Euclidean norm)  
+tGravityAccMag-mean(): Mean of the magnitude of the GravityAcc signal (calculated using Euclidean norm)  
+tBodyAccJerkMag-mean(): Mean of the magnitude of the BodyAccJerk signal (calculated using Euclidean norm)  
+tBodyGyroMag-mean(): Mean of the magnitude of the BodyGyro signal (calculated using Euclidean norm)  
+tBodyGyroJerkMag-mean(): Mean of the magnitude of the BodyGyroJerk signal (calculated using Euclidean norm)  
+fBodyAcc-mean()-XYZ: Mean of the frequency domain of BodyAcc in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)  
+fBodyAcc-meanFreq()-XYZ: Weighted average of the frequency components in BodyAcc in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)
+fBodyAccJerk-mean()-XYZ: Mean of the frequency domain of BodyAccJerk in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)  
+fBodyAccJerk-meanFreq()-XYZ: Weighted average of the frequency components in BodyAccJerk in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)  
+fBodyGyro-mean()-XYZ: Mean of the frequency domain of BodyGyro in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)  
+fBodyGyro-meanFreq()-XYZ: Weighted average of the frequency components in BodyGyro in the X,Y, or Z axis (after Fast Fourier Transform application) (3 variables)  
+fBodyAccMag-mean(): Mean of the frequency domain of BodyAccMag (after Fast Fourier Transform application)  
+fBodyAccMag-meanFreq(): Weighted average of the frequency components in BodyAccMag (after Fast Fourier Transform application) (3 variables)
+fBodyAccJerkMag-mean(): Mean of the frequency domain of BodyAccJerkMag (after Fast Fourier Transform application)  
+fBodyAccJerkMag-meanFreq(): Weighted average of the frequency components in BodyAccJerk (after Fast Fourier Transform application)
+fBodyGyroJerkMag-mean(): Mean of the frequency domain of BodyGyroJerkMag (after Fast Fourier Transform application)
+fBodyGyroJerk-meanFreq(): Weighted average of the frequency components in BodyAccJerk (after Fast Fourier Transform application) 
+
+Standard deviation has been calculated for all of these variables (except for the -meanFreq() variables). The only difference is that they have -std() at the end of their names instead of -mean()
+
+
